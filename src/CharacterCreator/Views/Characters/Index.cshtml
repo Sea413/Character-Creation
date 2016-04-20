@@ -13,7 +13,7 @@
                <p>@Html.DisplayFor(modelItem => listItem.Skin.name)</p>
                <p>@Html.DisplayFor(modelItem => listItem.Personality.name)</p>
                <p>@Html.DisplayFor(modelItem => listItem.Outfit.name)</p>
-            
-        }
+            <li>@Html.ActionLink("Details", "Details", new { id = listItem.characterId }) | @Html.ActionLink("Edit", "Edit", new { id = listItem.characterId }) | Test Delete @using (Html.BeginForm("Delete", "Characters", new { id = listItem.characterId })</li>
+
 </body>
 </html>

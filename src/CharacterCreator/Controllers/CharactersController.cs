@@ -36,5 +36,30 @@ namespace CharacterCreator.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Edit(int id)
+        {
+            var thisCharacter = db.Characters.FirstOrDefault(characters => characters.characterId == id);
+            ViewBag.personalityId = new SelectList(db.Personalities, "personalityId", "name");
+            ViewBag.hairId = new SelectList(db.Hairs, "hairId", "name");
+            ViewBag.skinId = new SelectList(db.Skins, "skinId", "name");
+            ViewBag.outfitId = new SelectList(db.Outfits, "outfitId", "name");
+            return View(thisCharacter);
+        }
+        [HttpPost]
+        public ActionResult Edit(Character character)
+        {
+            db.Entry(character).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete(int id)
+        {
+            var thischaracter = db.Characters.FirstOrDefault(x => x.characterId == id);
+            db.Characters.Remove(thischaracter);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
