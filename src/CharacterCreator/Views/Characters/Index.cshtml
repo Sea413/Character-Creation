@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CharacterCreator.Models.Character>
+
+<html>
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+    <h2>CAHARACTERS</h2>
+        @foreach (var listItem in Model)
+        {
+            <h3>@Html.DisplayFor(modelItem => listItem.name)</h3>
+               <p>@Html.DisplayFor(modelItem => listItem.Hair.name)</p>
+               <p>@Html.DisplayFor(modelItem => listItem.Skin.name)</p>
+               <p>@Html.DisplayFor(modelItem => listItem.Personality.name)</p>
+               <p>@Html.DisplayFor(modelItem => listItem.Outfit.name)</p>
+            
+        }
+</body>
+</html>
