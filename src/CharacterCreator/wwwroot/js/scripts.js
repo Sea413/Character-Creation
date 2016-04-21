@@ -1,14 +1,14 @@
 ﻿$(document).ready(function () {
     $("#hairId").change(function () {
-        $('#dave').html("<img src='/hairs/" + this.value+ ".jpg'/>")
+        $('#hair').html("<img src='/images/hair/" + this.value+ ".png'/>")
     });
     $("#skinId").change(function () {
-        $('#dave').html("<img src='/skins/" + this.value + ".jpg'/>")
+        $('#skin').html("<img src='/images/skin/" + this.value + ".png'/>")
     });
     $("#personalitiesId").change(function () {
-        $('#dave').html("<img src='/personalities/" + this.value + ".jpg'/>")
+        $('#dave').html("<img src='/personalities/" + this.value + ".png'/>")
     });
-    $("#outfitsId").change(function () {
-        $('#dave').html("<img src='/outfits/" + this.value + ".jpg'/>")
+    $("#outfitId").change(function () {
+        $('#outfits').html("<img src='/images/outfits/" + this.value + ".png'/>")
     });
 });

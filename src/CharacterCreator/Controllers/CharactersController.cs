@@ -29,6 +29,7 @@ namespace CharacterCreator.Controllers
 
             return View();
         }
+
         [HttpPost]
         public ActionResult Create(Character character)
         {
@@ -36,9 +37,16 @@ namespace CharacterCreator.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Details(int id)
+        {
+            var thisCharacter = db.Characters.Include(characters => characters.Hair).Include(characters => characters.Skin).Include(characters => characters.Personality).Include(characters => characters.Outfit).FirstOrDefault(characters => characters.id == id);
+            return View(thisCharacter);
+        }
+
         public ActionResult Edit(int id)
         {
-            var thisCharacter = db.Characters.FirstOrDefault(characters => characters.characterId == id);
+            var thisCharacter = db.Characters.FirstOrDefault(characters => characters.id == id);
             ViewBag.personalityId = new SelectList(db.Personalities, "personalityId", "name");
             ViewBag.hairId = new SelectList(db.Hairs, "hairId", "name");
             ViewBag.skinId = new SelectList(db.Skins, "skinId", "name");
@@ -55,7 +63,7 @@ namespace CharacterCreator.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult Delete(int id)
         {
-            var thischaracter = db.Characters.FirstOrDefault(x => x.characterId == id);
+            var thischaracter = db.Characters.FirstOrDefault(x => x.id == id);
             db.Characters.Remove(thischaracter);
             db.SaveChanges();
             return RedirectToAction("Index");

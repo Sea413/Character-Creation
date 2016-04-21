@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>To Do List</title>
+    <title>Character Creation</title>
 </head>
 <body>
     <h2>CAHARACTERS</h2>
@@ -13,7 +13,19 @@
                <p>@Html.DisplayFor(modelItem => listItem.Skin.name)</p>
                <p>@Html.DisplayFor(modelItem => listItem.Personality.name)</p>
                <p>@Html.DisplayFor(modelItem => listItem.Outfit.name)</p>
-            <li>@Html.ActionLink("Details", "Details", new { id = listItem.characterId }) | @Html.ActionLink("Edit", "Edit", new { id = listItem.characterId }) | Test Delete @using (Html.BeginForm("Delete", "Characters", new { id = listItem.characterId })</li>
+
+                @Html.ActionLink("Details", "Details", new { id = listItem.id })
+
+                @using (Html.BeginForm("Delete", "Characters", new { id = listItem.id }))
+                {
+                    <input type="submit" value="Delete" />
+                }
+   
+        }
+     
+
+       <h3> Create a Character</h3>
+    @Html.ActionLink("Create", "Create")
 
 </body>
 </html>

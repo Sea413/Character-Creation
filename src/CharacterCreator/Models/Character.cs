@@ -11,7 +11,7 @@ namespace CharacterCreator.Models
         public class Character
         {
             [Key]
-            public int characterId { get; set; }
+            public int id { get; set; }
             public string name { get; set; }
             public int hairId { get; set; }
             public virtual Hair Hair { get; set; }
